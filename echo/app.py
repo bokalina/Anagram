@@ -3,6 +3,7 @@
 from flask import Flask
 from flask import request
 from flask import jsonify
+from anagram import are_anagrams
 
 app = Flask(__name__)
 
@@ -32,4 +33,6 @@ def anagrams(msg=None):
 def after_request(response):
     """Tweak response."""
     response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
     return response
